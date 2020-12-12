@@ -1,0 +1,17 @@
+name: 'Generate a markdown post from issue for hexo'
+description: 'Generate a markdown post from issue for hexo'
+inputs:
+  issueJson:  # id of input
+    description: 'JSON string of the issue details'
+    required: true
+    default: ''
+  authorizedUser:
+    description: 'User ID of who can post article'
+    required: true
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.issueJson }}
+    - ${{ inputs.authorizedUser }}
